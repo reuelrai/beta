@@ -1,38 +1,104 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Preloader container */
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(22,22,22,255); /* Black background for preloader */
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  z-index: 9999;
+  opacity: 1; /* Initial opacity */
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease; /* Transition for opacity and transform */
 }
 
-.App-link {
-  color: #61dafb;
+#preloader.hidden {
+  opacity: 0; /* Fade out opacity */
+  transform: scale(1.3); /* Scale up slightly for effect */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+.progress-container {
+  position: relative;
+  width: 300px; /* Adjusted for new size */
+  height: 300px; /* Adjusted for new size */
+}
+
+.progress-circle {
+  transform: rotate(-90deg);
+}
+
+.progress-background {
+  fill: none;
+  stroke: none;
+  stroke-width: 2;
+}
+
+.progress-bar {
+  fill: none;
+  stroke: gray;
+  stroke-width: 2; /* Thickness remains the same */
+  stroke-dasharray: 753.98; /* Adjusted for new radius (2 * π * 120) */
+  stroke-dashoffset: 753.98; /* Adjusted for new radius */
+  transition: ease-out 0.4s;
+}
+
+/* Hiding the preloader when loading is done */
+.hidden {
+  visibility: hidden;
+  display: none;
+}
+
+body {
+  background-color: rgba(22,22,22,255);
+}
+
+.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(22,22,22,255); /* Black background for main content */
+  display: none; /* Ensure content is hidden initially */
+  flex-direction: column; /* Stack items vertically */
+  justify-content: center; /* Center items vertically */
+  align-items: center; /* Center items horizontally */
+  transition: ease; /* Transition effect */
+}
+
+.logo {
+  max-width: 200px; /* Adjust logo size */
+  margin-bottom: 0px; /* Space between logo and button */
+}
+
+button {
+  padding: 10px 30px; /* Increase padding for a larger button */
+  font-size: 25px; /* Adjust size as needed */
+  cursor: pointer; /* Pointer cursor on hover */
+  background: linear-gradient(90deg, rgba(22,22,22,255), rgba(22,22,22,255)); /* Gradient background */
+  color: white; /* White text color */
+  border-radius: 30px; /* Rounded corners */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Shadow effect */
+  transition: background 0.3s, transform 0.3s; /* Transition for background and transform */
+  font-family: 'Pixelify Sans', cursive; /* Use Google Font */
+  letter-spacing: 3px; /* Adjust letter-spacing as needed */
+}
+
+
+button:hover {
+  background: linear-gradient(90deg, #545454, rgba(22,22,22,255)); /* Change gradient on hover */
+  transform: translateY(-3px); /* Slightly lift the button on hover */
+}
+
+button:active {
+  transform: translateY(1px); /* Pressed effect */
+}
+
+
+
+.progress-value{
+  visibility: hidden;
 }
